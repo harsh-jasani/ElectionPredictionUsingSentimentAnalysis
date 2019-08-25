@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{placeholder}}</title>
+</head>
+<body>
+
+{% load static %}
+<img src="{% static 'app3/cover_bg_1.jpg' %}" alt="My image">
+<form name="user"  method="get" action="http://127.0.0.1:8000/app3/calculate">
+    Please enter the name of the candidate:
+    <input type="text" name="hashtag" />
+
+    <br>How many months of data?
+    <input tpye="text" name="months" />
+    <br>
+    <input type="submit" name="Send" />
+</form>
+
+</body>
+</html>

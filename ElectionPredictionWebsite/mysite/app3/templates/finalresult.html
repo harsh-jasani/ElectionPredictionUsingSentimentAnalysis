@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!-- saved from url=(0155)file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Election Prediction</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO">
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive">
+	<meta name="author" content="FREEHTML5.CO">
+
+  <!-- 
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE 
+	DESIGNED & DEVELOPED by FREEHTML5.CO
+		
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:description" content="">
+	<meta name="twitter:title" content="">
+	<meta name="twitter:image" content="">
+	<meta name="twitter:url" content="">
+	<meta name="twitter:card" content="">
+	{% load static %}
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/favicon.ico">
+
+	<link href="{% static 'app3/css' %}" rel="stylesheet" type="text/css">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'app3/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'app3/icomoon.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'app3/bootstrap.css' %}">
+	<!-- Superfish -->
+	<link rel="stylesheet" href="{% static 'app3/superfish.css' %}">
+
+	<link rel="stylesheet" href="{% static 'app3/style.css' %}">
+
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'app3/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	<style>
+		input,h3 { color: black; }
+	</style>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', 'Hours per Day'],
+  ['Positive', {{positive}}],
+  ['Neutral', {{neutral}}],
+  ['Negative', {{negative}}]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Election Prediction',backgroundColor: '#E4E4E4', 'width':500, 'height':300, colors: ['#3CC813','#83ADA4', '#F82813']};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
+	</head>
+	<body >
+		<div id="fh5co-wrapper">
+		<div id="fh5co-page"><nav id="offcanvas-menu" role="navigation" style="height: 784px;">
+							<ul class="" id="" style="touch-action: pan-y;">
+								<li class="">
+									<a href="http://127.0.0.1:8000/app3">Home</a>
+								</li>
+								<li class="active">
+									<a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html">Projects</a>
+									
+								</li>
+								<li class="">
+									
+									 <ul class="fh5co-sub-menu" style="display: none;">
+									 	<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/left-sidebar.html">Web Development</a></li>
+									 	<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/right-sidebar.html">Branding &amp; Identity</a></li>
+										<li>
+											<a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html#" class="fh5co-sub-ddown sf-with-ul">Free HTML5</a>
+											<ul class="fh5co-sub-menu" style="display: none;">
+												<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">Build</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Work</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>
+											</ul>
+										</li>
+										<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html#">UI Animation</a></li>
+										<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html#">Copywriting</a></li>
+										<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html#">Photography</a></li> 
+									</ul>
+								</li>
+								<li class=""><a href="http://127.0.0.1:8000/about">About</a></li>
+								<li class=""></li>
+								<li><a href="http://127.0.0.1:8000/app3/contact">Contact</a></li>
+							</ul>
+						</nav><nav id="offcanvas-menu" role="navigation" style="height: 838px;">
+							<ul class="" id="" style="touch-action: auto;">
+								<li class="">
+									<a href="http://127.0.0.1:8000/app3">Home</a>
+								</li>
+								<li class="active">
+									<a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html">Projects</a>
+									
+								</li>
+								<li class="">
+									
+									 <ul class="fh5co-sub-menu" style="display: none;">
+									 	<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/left-sidebar.html">Web Development</a></li>
+									 	<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/right-sidebar.html">Branding &amp; Identity</a></li>
+										<li>
+											<a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html#" class="fh5co-sub-ddown">Free HTML5</a>
+											<ul class="fh5co-sub-menu" style="display: none;">
+												<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">Build</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Work</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>
+											</ul>
+										</li>
+										<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html#">UI Animation</a></li>
+										<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html#">Copywriting</a></li>
+										<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/portfolio.html#">Photography</a></li> 
+									</ul>
+								</li>
+								<li class=""><a href="http://127.0.0.1:8000/about">About</a></li>
+								<li class=""></li>
+								<li><a href="http://127.0.0.1:8000/app3/contact">Contact</a></li>
+							</ul>
+						</nav><nav id="offcanvas-menu" role="navigation" style="height: 838px;">
+							<ul class="" id="" style="touch-action: pan-y;">
+								<li>
+									<a href="http://127.0.0.1:8000/app3">Home</a>
+								</li>
+								<li class="active">
+									<a href="http://127.0.0.1:8000/app3/portfolio" class="fh5co-sub-ddown sf-with-ul">Projects</a>
+									<ul class="fh5co-sub-menu" style="display: none;">
+										<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">Build</a></li>
+										<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Work</a></li>
+										<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
+										<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
+										<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
+										<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/services.html" class="fh5co-sub-ddown sf-with-ul">Services</a>
+									 <ul class="fh5co-sub-menu" style="display: none;">
+									 	<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/left-sidebar.html">Web Development</a></li>
+									 	<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/right-sidebar.html">Branding &amp; Identity</a></li>
+										<li>
+											<a href="http://127.0.0.1:8000/app3/portfolio#" class="fh5co-sub-ddown sf-with-ul">Free HTML5</a>
+											<ul class="fh5co-sub-menu" style="display: none;">
+												<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">Build</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Work</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>
+											</ul>
+										</li>
+										<li><a href="http://127.0.0.1:8000/app3/portfolio#">UI Animation</a></li>
+										<li><a href="http://127.0.0.1:8000/app3/portfolio#">Copywriting</a></li>
+										<li><a href="http://127.0.0.1:8000/app3/portfolio#">Photography</a></li>
+									</ul>
+								</li>
+								<li><a href="http://127.0.0.1:8000/about">About</a></li>
+								<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/blog.html">Blog</a></li>
+								<li><a href="http://127.0.0.1:8000/app3/contact">Contact</a></li>
+							</ul>
+						</nav>
+		<div id="fh5co-header">
+			<header id="fh5co-header-section">
+				<div class="container">
+					<div class="nav-header">
+						<a href="http://127.0.0.1:8000/app3/portfolio#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+						<h1 id="fh5co-logo"><a href="http://127.0.0.1:8000/app3">Election Prediction</a></h1>
+						<!-- START #fh5co-menu-wrap -->
+						<nav id="fh5co-menu-wrap" role="navigation">
+							<ul class="sf-menu sf-js-enabled sf-arrows" id="fh5co-primary-menu" style="touch-action: pan-y;">
+								<li class="">
+									<a href="http://127.0.0.1:8000/app3">Home</a>
+								</li>
+								<li class="active">
+									<a href="http://127.0.0.1:8000/app3/portfolio">Projects</a>
+									
+								</li>
+								<li class="">
+									
+									 <ul class="fh5co-sub-menu" style="display: none;">
+									 	<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/left-sidebar.html">Web Development</a></li>
+									 	<li><a href="file:///C:/Users/harsh/Downloads/Election%20Prediction%20Website%20Template/Pentagon%20Free%20Website%20Template%20-%20Free-CSS.com/pentagon/right-sidebar.html">Branding &amp; Identity</a></li>
+										<li>
+											<a href="http://127.0.0.1:8000/app3/portfolio#" class="fh5co-sub-ddown sf-with-ul">Free HTML5</a>
+											<ul class="fh5co-sub-menu" style="display: none;">
+												<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">Build</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Work</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
+												<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>
+											</ul>
+										</li>
+										<li><a href="http://127.0.0.1:8000/app3/portfolio#">UI Animation</a></li>
+										<li><a href="http://127.0.0.1:8000/app3/portfolio#">Copywriting</a></li>
+										<li><a href="http://127.0.0.1:8000/app3/portfolio#">Photography</a></li>
+									</ul>
+								</li>
+								<li class=""><a href="http://127.0.0.1:8000/app3/about">About</a></li>
+								<li class=""></li>
+								<li><a href="http://127.0.0.1:8000/app3/contact">Contact</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+			
+		</div>
+		
+
+		<div class="fh5co-hero fh5co-hero-2">
+			<div class="fh5co-overlay"></div>
+			<div class="fh5co-cover fh5co-cover_2 text-center" data-stellar-background-ratio="0.5" style="background-image: url({% static 'app3/blog-2.jpg' %}); background-position: 0px 0px;">
+				<div class="desc animate-box fadeInUp animated">
+					<h2>Probability <strong>Finder</strong></h2>
+    
+    <div class="fh5co-cover fh5co-cover_2 text-center" data-stellar-background-ratio="0.5" style="background-image: url(&quot;/static/app3/blog-2.jpg&quot;); background-position: 0px 56.8px;">
+    <form name="user" method="get" action="http://127.0.0.1:8000/app3/calculate">
+		</br></br>
+        <input type="text" name="hashtag">
+        <input type="text" name="months">
+        <input type="submit" name="Calculate">
+    </form>
+	
+	<br>
+	
+	
+	
+	<h4> Candidate Name: {{hashtag}} </h4>
+	<h4> Positive Tweets: {{positive}} </h4>
+	<h4> Neutral Tweets: {{neutral}} </h4>
+	<h4> Negative Tweets: {{negative}} </h4>
+	<h4> Probability: {{probability}} </h4>
+		<div class="fh5co-cover fh5co-cover_2 text-center" data-stellar-background-ratio="0.5" style="background-image: url(&quot;/static/app3/blog-2.jpg&quot;); background-position: 0px 56.8px;"style="text-align:center">
+
+		<div style="display: inline-block" id="piechart"/>
+		</div>
+	</br><br>
+	<form action="http://127.0.0.1:8000/app3/portfolio">
+		<input type="submit" name="resetbutton" value="Reset" />
+	</form>
+		<!--<a href="app3/ua.csv">Download</a>-->
+	<form action="http://127.0.0.1:8000/app3/download">
+
+		<input type="submit"  value="Download tweets!" /> 
+	</form>
+	<br>
+	
+	
+<div>
+    </div></div>
+					
+				</div>
+
+
+			</div>
+		</div>
+	
+		
+
+		
+		
+	</div>
+	
+<footer>
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center">
+							
+							<p>Copyright 2019 </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	
+
+
+<script src="{% static 'app3/jquery.min.js' %}"></script>
+	<!-- jQuery Easing -->
+	<script src="{% static 'app3/jquery.easing.1.3.js' &}"></script>
+	<!-- Bootstrap -->
+	<script src="{% static 'app3/bootstrap.min.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'app3/jquery.waypoints.min.js' %}"></script>
+	<!-- Stellar -->
+	<script src="{% static 'app3/jquery.stellar.min.js' %}"></script>
+	<!-- Superfish -->
+	<script src="{% static 'app3/hoverIntent.js' %}"></script>
+	<script src="{% static 'app3/superfish.js' %}"></script>
+
+	<!-- Main JS -->
+	<script src="{% static 'app3/main.js' %}"></script>
+
+	
+
+
+</body></html>
