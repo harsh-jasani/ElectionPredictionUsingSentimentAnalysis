@@ -13,7 +13,7 @@ How to run?
 5. Execute the command "python manage.py runserver".
 6. Go to address "http://127.0.0.1:8000/app3" in a browser (The web application is located at /app3).
 
-The code explanation, along with the libraries used, is located in the file "Project Code Explanation.txt".
+The code explanation, along with the libraries used, is located in the file "Project Code Explanation.txt". And, the screenshots of the project are located in the "Project Screenshots" directory.
 
 
 
