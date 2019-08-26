@@ -77,9 +77,8 @@ def getresults(request):
     result_wait.join()
     print(result)
     result_list = result.split(",")
-    if (result_list[0] + result_list[1] + result_list[2]) == 0:
+    if result == "no tweets":
         return render(request, "notweets.html")
     # probab_str = str("%.2f" % )
     probab_str = round(int(result_list[0])*100/(int(result_list[0])+int(result_list[2])), 2)
-
     return render(request, "finalresult.html", {'hashtag': input_obtained, 'positive': result_list[0], 'negative': result_list[2], 'neutral': result_list[1], 'probability': probab_str})

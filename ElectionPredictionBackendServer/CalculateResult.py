@@ -19,11 +19,11 @@ def calculatetweetsdemo(input_obtained, input_month):
     neutral_count = 0
     consumer_key = 'pBQ6uagJoN3eksDl55bzaSepf'
     consumer_secret = 'NEA8UFjkf7325FhKWba02kgQJWSKmQLhCrXzWYyyyaQEXICNic'
-    access_token = '3934290492-EP7TsR0NrCyRoNQwvkCcZ5GiFwyUV1XBllA8AWr'
-    access_token_secret = 'RiY0e2QAYZt5vdvKZNE94sQEDbNsbLTvsOruQsxCqIOzX'
     auth = tweepy.AppAuthHandler(consumer_key, consumer_secret)
     api = tweepy.API(auth, wait_on_rate_limit=True)
     tweet_list = []
+    final_month = 0
+    final_year = 2019
 
     def calculate_sentiment(tweet):
         test_tweet = TextBlob(cleantweet(tweet))
@@ -37,38 +37,7 @@ def calculatetweetsdemo(input_obtained, input_month):
     def cleantweet(tweet):
         return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t]) | (\w+:\ / \ / \S+)", " ", tweet).split())
 
-    def count_total_sentiment_tweets(tweet_list):
-        nonlocal positive_count, neutral_count, negative_count
-        print(len(tweet_list))
-        for tweet in tweet_list:
-            sentiment_type = tweet['sentiment']
-            print(sentiment_type)
-            if sentiment_type == 'positive':
-                positive_count = positive_count + 1
-            elif sentiment_type == 'negative':
-                negative_count = negative_count + 1
-            else:
-                neutral_count = neutral_count + 1
-        if neutral_count > positive_count:
-            temp = neutral_count
-            neutral_count = positive_count
-            positive_count = temp
-        total_tweets = positive_count + neutral_count + negative_count
-        if total_tweets == 0:
-            notweets = True
-        print(str(positive_count) + " " + str(negative_count) + " " + str(neutral_count))
-        print(" " + str(total_tweets))
-
-    final_month = 0
-    final_year = 2019
-
-    def gettweets():
-        nonlocal final_month, final_year
-        print("called")
-        print(input_obtained)
-        gettweets2(final_month, final_year)
-
-    def gettweets2(final_month, final_year):
+    def gettweets(final_month, final_year):
         nonlocal months_not_entered
         nonlocal error
         x = re.findall("\D", str(input_month))
@@ -88,27 +57,29 @@ def calculatetweetsdemo(input_obtained, input_month):
             error = True
             print(error)
             return
-        if (entered_month < 4):
-            final_month = 4 - entered_month
-        elif (4 - entered_month <= 0):
-            quotient = int(entered_month / 4)
-            final_year = final_year - quotient
-            entered_month = entered_month % 4
-            final_month = 12 - entered_month
-        print(str(final_year) + " " + str(final_month))
         todays_date = date.today()
         print(todays_date)
         todays_date = str(todays_date).split("-")
+        current_month = int(todays_date[1])
+
+        if entered_month < current_month:
+            final_month = current_month - entered_month
+        elif 4 - entered_month <= 0:
+            quotient = int(entered_month / current_month)
+            final_year = final_year - quotient
+            entered_month = entered_month % current_month
+            final_month = 12 - entered_month
+        print(str(final_year) + " " + str(final_month))
         todays_day = todays_date[2]
         print(todays_day)
         nonlocal positive_count, neutral_count, negative_count
         repeated_count = 0
         tweet_counter = 0
         rootDir = os.path.dirname(os.path.abspath(__file__))
-        fh = open(rootDir + "/" + input_obtained + str(months) + "tweets" + ".txt","w",encoding="utf-8")
+        fh = open(rootDir + "/" + input_obtained + str(months) + "tweets" + ".txt", "w", encoding="utf-8")
         for tweet in tweepy.Cursor(api.search, q="#" + input_obtained, lang="en", count = 200,
                                    since=str(final_year) + "-" + str(final_month) + "-"+todays_day).items():
-            print("tweet "+ str(tweet_counter) + " processed")
+            print("tweet " + str(tweet_counter) + " processed")
             sentiment_type = calculate_sentiment(tweet.text)
             tweets_no_repeat = {'text': tweet.text, 'sentiment': sentiment_type}
             if tweet.retweet_count > 0:
@@ -133,7 +104,7 @@ def calculatetweetsdemo(input_obtained, input_month):
 
             elif tweet.retweet_count == 0:
                 tweet_list.append(tweets_no_repeat)
-                fh.write(tweet.text.replace("\n","") + "--++==" + sentiment_type+"\n")
+                fh.write(tweet.text.replace("\n", "") + "--++==" + sentiment_type+"\n")
                 if sentiment_type == 'positive':
                     positive_count = positive_count + 1
                 elif sentiment_type == 'negative':
@@ -148,7 +119,7 @@ def calculatetweetsdemo(input_obtained, input_month):
             notweets = True
         print(str(positive_count) + " " + str(negative_count) + " " + str(neutral_count))
         print(" " + str(total_tweets))
-        print("repeated ",repeated_count)
+        print("repeated ", repeated_count)
         print(len(tweet_list))
         nonlocal tweet_dict
         tweet_dict = {'Tweets': tweet_list}
@@ -158,7 +129,7 @@ def calculatetweetsdemo(input_obtained, input_month):
     error = False
     notweets = False
     months_not_entered = False
-    gettweets()
+    gettweets(final_month, final_year)
     print(error)
     if error:
         return "invalid input"

@@ -1,0 +1,45 @@
+The web application has been developed using Django framework. The server has been written in python and its code resides in the CalculateResult.py file in the ElectionPredictionBackendServer directory. The requirements are listed in the requirements.txt file.
+Modules used: tweepy, pandas, threading, socket, textblob, os, datetime.
+
+
+Code Explanation:
+
+The web application asks the user to enter the name of a candidate and the number of months how old the tweets should be. After the user enters the "candidate name" and the "number of months", the getresults() function in the views.py located at ElectionPredictionWebsite/mysite/app3/ is invoked since it corresponds to the app3/calculate/ url pattern.
+
+method getresults(request):
+
+In this method, the "candidate name" and the "number of months" both are extracted from the request parameter. Then, both of them are checked to see whether they are empty. If yes, then error page is displayed. If not empty, then a "hashtag" is obtained from the candidate name by converting it to lower case and removing all the spaces from it. The "number of months" is checked to see if it contains anything other than digits. If yes, an error page is displayed. If both of them are valid, then the thread "ResultWaitThread" is started by passing "hashtag" and "number of months" to it. After the execution of the ResultWaitThread is complete, the result is obtained. The result would contain the positive, neutral and negative counts separated by a comma. Thus, the result is split using the split() method and a list called tweet_list is created. Using the result, a probability value is calculated to indicate the chances of a candidate to win the election. Then a resulting page is rendered that contains the positive, negative and neutral counts along with the probability value for the particular candidate.
+
+
+thread ResultWaitThread:
+
+A server socket actively listens to the connection requests from the clients while the CalculateResult.py server file is running.
+This thread creates the client socket and establishes a connection with the server. After the connection is established, the "hashtag" and "number of monhts" are passed to the server as a comma separated pair.This pair is received by the server and is split into "hashtag" and "number of months" after removing the comma. Then, ProcessTweetsThread is started by passing the "hashtag" and the "number of months" parameter to it.
+
+thread ProcessTweetsThread:
+
+This thread is responsible for caching, fetching the tweets corresponding to the hashtag and the number of monhts, performing sentiment analysis on the tweets to obtain the result and sending this result back to the client. First, it checks whether a cache file coressponding to the "hashtag" and "number of months" already exists. If it does exist, then the file is read to obtain the result and then the result is sent back to the client. If it does not exist, then it calls the calculatetweetsdemo() method by passing the "hashtag" and "number of months". Once the result is obtained after the execution of calculatetweetsdemo() method, the result is then written to a cache file. The reason for doing this is to make the execution of the application much faster since if a same search query is provided again to the application, it will just read from the cache file and display the corresponding result to the user immediately. Once that is done, the result is returned back to the client using the "client_socket". The result contains nothing but the number of positive, negative and neutral tweets corresponding to the "candidate name" and the "number of months" entered by the user.
+
+method calculatetweetsdemo(input_obtained, input_month):
+
+It first creats a dictionary called "tweet_dict" in order to hold the tweets. Then, the positive, negative and neutral counts are all initialized to 0. Using the consumer key and consumer secret key, authentication with the Twitter API is achieved. For this, the "tweepy" library of Python is used. The parameter "wait_on_rate_limit" is set to True in order to wait when the maximum number of tweets obtained in a specific time set by the Twitter API is reached. Then, a tweet_list is initialized which will hold all the tweets along with their corresponding sentiments. A call is then made to the gettweets() method.
+
+method gettweets(final_month, final_year):
+
+This method is responsible for extracting the tweets from the Twitter and do further processing. In order to obtain the tweets from Twitter, we have to specify the exact date, starting which the tweets should be obtained, while making a request to the Twitter API. Hence, corresponding to the current date, the exact date which is away by the "number of months" entered by the user is calculated. Thus, the result date is stored in "final_year", "final_month" and "todays_day" variables. Then, a new file is created with the name "hashtag"+"number of months"+".txt" in order to store all the tweets along with their sentiments for future reference. This can be useful if we want to check the efficiency of the sentiment classifier. If not required then, this step can be removed which will minimize the resources used.
+Using the tweepy.Cursor a request is made to the Twitter API to get the tweets corresponding to the "hashtag" and the number of months entered. As each tweet is obtained from Twitter, it's sentiment is determined by the calculate_sentiment() method. The sentiment is then stored in the variable "sentiment_type". For the tweets obtained from Twitter, it is possible that some tweets may appear more than once because of the retweets. So, this method makes sure that the tweets are stored only once in the "tweet_list". And, as each tweet is received, the counter corresponding to its "sentiment_type" is increased. Then, "tweet_list" list is stored in the "tweet_dict" dictionary. "tweet_dict" is then converted into a DataFrame using the "pandas" library. Then, the DataFrame is written to a csv file.
+
+method calculate_sentiment(tweet):
+
+This method firstly cleans the tweet by calling the cleantweet() method. Now, in order to determine the sentiment of the cleaned tweet, the TextBlob library is used. The tweet is passed to the sentiment method and using its polarity property the polarity value of the tweet is obtained. If the polarity value is greater than 0, then the method returns "positive". If it is equal to 0, this method returns "neutral". Otherwise, it returns "negative". This way, the sentiment of the tweet is known and is returned back to the gettweets() method.
+
+method cleantweet(tweet):
+
+This method cleans the tweet passed to it by only keeping the characters in the string that correspond to its sentiment. All other characters are removed and the resultant tweet is returned by this method. For example, there may be some non-English characters that do not play any role in determining the sentiment of the entire tweet as a whole.
+
+method download(request):
+
+When the results have been displayed to the user, there is an option to download the tweets along with their sentiments. On clicking the "Download" button, this method located in the views.py file at ElectionPredictionWebsite/mysite/app3/ is invoked. This method automatically names the file and downlods it to the user's system with the extension .csv.
+
+
+
